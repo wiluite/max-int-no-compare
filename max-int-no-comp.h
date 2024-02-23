@@ -14,19 +14,19 @@ namespace mi_ns {
     }
 
     auto max_int_nocmp(int a, int b) -> int {
-        auto const constexpr signbit = 1u << 31u;
+        auto const constexpr sign_bit = 1u << 31u;
 
-        if (!(signbit & a) && signbit & b) 
+        if (!(sign_bit & a) && sign_bit & b) 
             return a;
-        if (!(signbit & b) && signbit & a)
+        if (!(sign_bit & b) && sign_bit & a)
             return b;
 
         auto const a_orig{a}; 
         auto const b_orig{b};
         
-        auto const neg = (signbit & a && signbit & b) ? (a = std::abs(a), b = std::abs(b), true) : false;
+        auto const neg = (sign_bit & a && sign_bit & b) ? (a = std::abs(a), b = std::abs(b), true) : false;
         
-        for (auto cmp_bit = signbit >> 1u; cmp_bit; cmp_bit >>= 1u) {
+        for (auto cmp_bit = sign_bit >> 1u; cmp_bit; cmp_bit >>= 1u) {
             using namespace detail;
             auto _ = [&](auto f, auto s) {
                 if (cmp_bit & f && !(cmp_bit & s)) 
