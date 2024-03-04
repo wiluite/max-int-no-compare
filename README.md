@@ -3,8 +3,8 @@ A humorous function for comparing two integers without using comparison operator
 
 #### Features:  
 <, >, <=, >=, !=, == operators not used  
-? operator is used but sure can be changed to usual if-then-else branch  
+ternary operator is not used  
 automatic conversion to bool  
-non-optimal
+probably, non-optimal  
  
 See test.
